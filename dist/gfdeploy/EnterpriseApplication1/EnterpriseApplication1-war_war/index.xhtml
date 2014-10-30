@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    
+    <body>
+
+        <ui:composition template="./WEB-INF/sucsess.xhtml">
+
+            <ui:define name="content">
+                <c:if test="#{loginBean.isLogin()}">
+                        <h:outputLabel value="Logined Sucessful"></h:outputLabel>
+                         <h:dataTable var="f" value="#{loginBean}">
+                            <h:column>#{f.name}</h:column>
+                            <h:column>#{f.password}</h:column>
+                         </h:dataTable>
+                        
+                    </c:if>
+               
+                <h:form id="loginForm" class="form-signin">
+                <h2 class="form-signin-heading" style="margin-top: 0px;">Sign in</h2>
+                <p:messages />
+                <p:inputText styleClass="form-control username" id="username" value="#{loginBean.name}" required="true" requiredMessage="Please enter your username" />
+                <p:password styleClass="form-control password" id="password" value="#{loginBean.password}" required="true" requiredMessage="Please enter your password" />
+                <h:commandButton value="Sign in"  action="newTemplateClient" actionListener="#{loginBean.login}" />
+            </h:form>
+       
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

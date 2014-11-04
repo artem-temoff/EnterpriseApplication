@@ -6,32 +6,28 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-
+<h:head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
     
     <body>
-
         <ui:composition template="./WEB-INF/sucsess.xhtml">
-
             <ui:define name="content">
                 <c:if test="#{loginBean.isLogin()}">
-                        <h:outputLabel value="Logined Sucessful"></h:outputLabel>
-                         <h:dataTable var="f" value="#{loginBean}">
-                            <h:column>#{f.name}</h:column>
-                            <h:column>#{f.password}</h:column>
-                         </h:dataTable>
-                        
-                    </c:if>
-               
+                    <script type="text/javascript">
+                        location.replace("/EnterpriseApplication1-war/faces/signIn.xhtml");
+                    </script>   
+                </c:if>
+                
                 <h:form id="loginForm" class="form-signin">
                 <h2 class="form-signin-heading" style="margin-top: 0px;">Sign in</h2>
                 <p:messages />
-                <p:inputText styleClass="form-control username" id="username" value="#{loginBean.name}" required="true" requiredMessage="Please enter your username" />
-                <p:password styleClass="form-control password" id="password" value="#{loginBean.password}" required="true" requiredMessage="Please enter your password" />
-                <h:commandButton value="Sign in"  action="newTemplateClient" actionListener="#{loginBean.login}" />
+                <p:inputText styleClass="form-control username" rendered="#{not userBean.isLogged()}" id="username" value="#{loginBean.name}" required="true" requiredMessage="Please enter your username" />
+                <p:password styleClass="form-control password" id="password" rendered="#{not userBean.isLogged()}" value="#{loginBean.password}" required="true" requiredMessage="Please enter your password" />
+                <p:commandButton value="Sign in" rendered="#{not userBean.isLogged()}" update="loginForm" action="#{loginBean.login}" />
+                
             </h:form>
-       
             </ui:define>
         </ui:composition>
-
     </body>
 </html>

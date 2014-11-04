@@ -5,7 +5,7 @@
  */
 package com.EnterpriseApplication1.ejb;
 
-import com.EnterpriseApplication.jpa.Users;
+import com.EnterpriseApplication1.jpa.Users;
 import java.util.List;
 import javax.ejb.Local;
 

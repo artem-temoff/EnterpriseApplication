@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.EnterpriseApplication.jpa;
+package com.EnterpriseApplication1.jpa;
 
 import java.io.Serializable;
 import javax.faces.bean.RequestScoped;
